@@ -23,6 +23,7 @@ public class ReplyServiceTests {
                 .build();
 
         log.info(replyService.register(replyDTO));
+
     }
 
 }

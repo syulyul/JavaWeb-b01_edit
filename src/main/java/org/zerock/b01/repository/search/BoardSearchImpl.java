@@ -121,8 +121,7 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
         //bno > 0
         query.where(board.bno.gt(0L));
 
-        JPQLQuery<BoardListReplyCountDTO> dtoQuery = query.select(Projections.
-                bean(BoardListReplyCountDTO.class,
+        JPQLQuery<BoardListReplyCountDTO> dtoQuery = query.select(Projections.bean(BoardListReplyCountDTO.class,
                         board.bno,
                         board.title,
                         board.writer,
