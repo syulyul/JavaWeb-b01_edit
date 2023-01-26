@@ -48,6 +48,7 @@
                         </div>
                     </form>
                 </div><!--end card body-->
+
             </div><!--end card-->
         </div><!--end col-->
     </div><!--end row-->
@@ -157,6 +158,42 @@
 
         uploadResult.innerHTML += str
     }
+
+    function removeFile(uuid,fileName, obj){
+
+        console.log(uuid)
+        console.log(fileName)
+        console.log(obj)
+
+        const targetDiv = obj.closest(".card")
+
+        removeFileToServer(uuid, fileName).then(data => {
+            targetDiv.remove()
+        })
+    }
+
+    document.querySelector(".submitBtn").addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const target = document.querySelector(".uploadHidden")
+
+        const uploadFiles = uploadResult.querySelectorAll("img")
+
+        let str = ''
+
+        for (let i = 0; i < uploadFiles.length ; i++) {
+            const uploadFile = uploadFiles[i]
+            const imgLink = uploadFile.getAttribute("data-src")
+
+            str += `<input type = 'hidden' name="fileNames" value="${imgLink}">`
+        }
+
+        target.innerHTML = str;
+
+        document.querySelector("form").submit();
+    }, false)
 
 
 </script>

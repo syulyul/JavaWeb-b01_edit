@@ -9,7 +9,7 @@ async function uploadToServer (formObj) {
         data: formObj,
         headers: {
             'Content-Type': 'multipart/form-data',
-        },
+        }
     });
 
     return response.data
